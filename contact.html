@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Padria</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .nav-link { position: relative; transition: color 0.3s; }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 50%; transform: translateX(-50%); background-color: #D97706; transition: width 0.3s; }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .cta-button { transition: all 0.3s ease; }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-serif font-bold text-gray-900">PADRIA</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="nav-link text-gray-600 hover:text-gray-900">Home</a>
+                <a href="menu.html" class="nav-link text-gray-600 hover:text-gray-900">Menu</a>
+                <a href="catering.html" class="nav-link text-gray-600 hover:text-gray-900">Catering</a>
+                <a href="about.html" class="nav-link text-gray-600 hover:text-gray-900">About</a>
+                <a href="contact.html" class="nav-link active text-gray-900 font-semibold">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden flex items-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="index.html" class="block py-2 px-4 text-sm hover:bg-gray-100">Home</a>
+            <a href="menu.html" class="block py-2 px-4 text-sm hover:bg-gray-100">Menu</a>
+            <a href="catering.html" class="block py-2 px-4 text-sm hover:bg-gray-100">Catering</a>
+            <a href="about.html" class="block py-2 px-4 text-sm hover:bg-gray-100">About</a>
+            <a href="contact.html" class="block py-2 px-4 text-sm hover:bg-gray-100 bg-gray-100">Contact</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                <h1 class="text-5xl font-serif font-bold mb-4">Get In Touch</h1>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">We'd love to hear from you. Whether it's a reservation, a question, or feedback, feel free to reach out.</p>
+            </div>
+
+            <div class="mt-16 grid md:grid-cols-2 gap-12">
+                <!-- Contact Info & Hours -->
+                <div class="space-y-8">
+                    <div>
+                        <h2 class="text-2xl font-serif font-bold mb-3">Contact Information</h2>
+                        <div class="space-y-2 text-lg text-gray-700">
+                             <p><strong>Address:</strong><br> 9708 NE 119th Way, Kirkland, WA 98034</p>
+                             <p><strong>Phone:</strong><br> <a href="tel:4258141693" class="text-amber-600 hover:underline">425.814.1693</a></p>
+                             <p><strong>Email:</strong><br> <a href="mailto:info@padria.com" class="text-amber-600 hover:underline">info@padria.com</a></p>
+                        </div>
+                    </div>
+                     <div>
+                        <h2 class="text-2xl font-serif font-bold mb-3">Hours of Operation</h2>
+                        <div class="space-y-2 text-lg text-gray-700">
+                           <p><strong>Mon-Sat:</strong> 11:00 AM - 9:00 PM</p>
+                           <p><strong>Wednesday:</strong> 11:00 AM - 3:00 PM</p>
+                           <p><strong>Sunday:</strong> 12:00 PM - 8:00 PM</p>
+                        </div>
+                    </div>
+                     <div>
+                        <h2 class="text-2xl font-serif font-bold mb-3">Connect With Us</h2>
+                         <div class="flex space-x-4">
+                            <a href="#" class="text-gray-500 hover:text-amber-600"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg></a>
+                            <a href="#" class="text-gray-500 hover:text-amber-600"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg></a>
+                            <a href="#" class="text-gray-500 hover:text-amber-600"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.013-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363-.416 2.427-.465C9.793 2.013 10.147 2 12.315 2zm-1.161 2.065c-1.056.047-1.666.223-2.139.423a2.882 2.882 0 00-1.078.773 2.882 2.882 0 00-.773 1.078c-.2.473-.376 1.083-.423 2.139-.047 1.024-.058 1.35-.058 3.518s.011 2.494.058 3.518c.047 1.056.223 1.666.423 2.139a2.882 2.882 0 00.773 1.078 2.882 2.882 0 001.078.773c.473.2 1.083.376 2.139.423 1.024.047 1.35.058 3.518.058s2.494-.011 3.518-.058c1.056-.047 1.666-.223 2.139-.423a2.882 2.882 0 001.078-.773 2.882 2.882 0 00.773-1.078c.2-.473.376-1.083.423-2.139.047-1.024.058-1.35.058-3.518s-.011-2.494-.058-3.518c-.047-1.056-.223-1.666-.423-2.139a2.882 2.882 0 00-.773-1.078 2.882 2.882 0 00-1.078-.773c-.473-.2-1.083-.376-2.139-.423-1.024-.047-1.35-.058-3.518-.058s-2.494.011-3.518.058zM12 8.25a3.75 3.75 0 100 7.5 3.75 3.75 0 000-7.5zM12 14a2 2 0 110-4 2 2 0 010 4zm6.406-7.185a.938.938 0 100-1.875.938.938 0 000 1.875z" clip-rule="evenodd" /></svg></a>
+                         </div>
+                    </div>
+                </div>
+                <!-- Map -->
+                <div>
+                     <iframe class="w-full h-full rounded-lg shadow-xl min-h-[400px]" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2683.083439245107!2d-122.1996540843651!3d47.71719947919241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549012010b9b81b7%3A0x7e5b2e6a3f1b4f4c!2s9708%20NE%20119th%20Way%2C%20Kirkland%2C%20WA%2098034!5e0!3m2!1sen!2sus!4v1688435000000!5m2!1sen!2sus" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10">
+        <div class="container mx-auto px-6 text-center">
+            <p class="font-serif text-2xl mb-2">PADRIA</p>
+            <p class="mb-4">&copy; 2025 Padria. All Rights Reserved.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="hover:text-amber-500 transition-colors">Facebook</a>
+                <a href="#" class="hover:text-amber-500 transition-colors">Yelp</a>
+                <a href="#" class="hover:text-amber-500 transition-colors">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
