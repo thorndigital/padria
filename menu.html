@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Padria</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .nav-link { position: relative; transition: color 0.3s; }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 50%; transform: translateX(-50%); background-color: #D97706; transition: width 0.3s; }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .menu-item { transition: transform 0.3s, box-shadow 0.3s; }
+        .menu-item:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .menu-section-header {
+            border-bottom: 2px solid #D97706;
+            padding-bottom: 0.5rem;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-serif font-bold text-gray-900">PADRIA</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="nav-link text-gray-600 hover:text-gray-900">Home</a>
+                <a href="menu.html" class="nav-link active text-gray-900 font-semibold">Menu</a>
+                <a href="catering.html" class="nav-link text-gray-600 hover:text-gray-900">Catering</a>
+                <a href="about.html" class="nav-link text-gray-600 hover:text-gray-900">About</a>
+                <a href="contact.html" class="nav-link text-gray-600 hover:text-gray-900">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden flex items-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="index.html" class="block py-2 px-4 text-sm hover:bg-gray-100">Home</a>
+            <a href="menu.html" class="block py-2 px-4 text-sm hover:bg-gray-100 bg-gray-100">Menu</a>
+            <a href="catering.html" class="block py-2 px-4 text-sm hover:bg-gray-100">Catering</a>
+            <a href="about.html" class="block py-2 px-4 text-sm hover:bg-gray-100">About</a>
+            <a href="contact.html" class="block py-2 px-4 text-sm hover:bg-gray-100">Contact</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h1 class="text-5xl font-serif font-bold text-center mb-12">Our Menu</h1>
+
+            <!-- Plates -->
+            <section class="mb-16">
+                <h2 class="text-3xl font-serif font-bold menu-section-header">Plates</h2>
+                <p class="text-center text-gray-600 -mt-4 mb-8">Served with Basmati Rice, Salad, Tzatziki & Grilled Pita</p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">CHICKEN SOUVLAKI PLATE</h3><span class="text-xl font-semibold text-amber-600">$16.99</span></div><p class="mt-2 text-gray-600">Grilled Greek Chicken Breast Skewer</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">BEEF SOUVLAKI PLATE</h3><span class="text-xl font-semibold text-amber-600">$17.99</span></div><p class="mt-2 text-gray-600">Grilled Greek USDA Top Sirloin Prime Steak Skewer</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">SHAWARMA PLATE</h3><span class="text-xl font-semibold text-amber-600">$15.99</span></div><p class="mt-2 text-gray-600">Shaved Roasted Chicken</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">FALAFEL PLATE (V)</h3><span class="text-xl font-semibold text-amber-600">$13.99</span></div><p class="mt-2 text-gray-600">Fried Chickpea Balls</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">LAMB GYRO PLATE</h3><span class="text-xl font-semibold text-amber-600">$15.99</span></div><p class="mt-2 text-gray-600">Shaved Vertical Rotisserie Lamb</p></div>
+                </div>
+            </section>
+
+            <!-- Special Plates -->
+            <section class="mb-16">
+                <h2 class="text-3xl font-serif font-bold menu-section-header">Special Plates</h2>
+                <p class="text-center text-gray-600 -mt-4 mb-8">Served with Tzatziki & Grilled Pita</p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">LAMB SHANK PLATE</h3><span class="text-xl font-semibold text-amber-600">$19.99</span></div><p class="mt-2 text-gray-600">Braised Bone-in Lamb served with Dill Basmati Rice (HOUSE FAVORITE)</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">GORMEH-SABZI & LAMB SHANK</h3><span class="text-xl font-semibold text-amber-600">$19.99</span></div><p class="mt-2 text-gray-600">Traditional Herb Stew with Braised Bone-in Lamb Shank served with Basmati Rice</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">TURKISH KOOFTEH PLATE</h3><span class="text-xl font-semibold text-amber-600">$15.99</span></div><p class="mt-2 text-gray-600">Tomato Braised Turkey Meatball & your choice of Basmati Rice or Salad</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">CHICKEN LOOBIA PLATE</h3><span class="text-xl font-semibold text-amber-600">$14.99</span></div><p class="mt-2 text-gray-600">Chicken & Green Bean Rice Stew</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">HOLLEH BOWL</h3><span class="text-xl font-semibold text-amber-600">$11.99</span></div><p class="mt-2 text-gray-600">Half Rice & Salad with Lamb Gyro and Chicken Gyro topped with Tomatoes. Served with Yogurt & Spicy Sauce</p></div>
+                </div>
+            </section>
+
+            <!-- Kabobs -->
+            <section class="mb-16">
+                <h2 class="text-3xl font-serif font-bold menu-section-header">Kabobs</h2>
+                <p class="text-center text-gray-600 -mt-4 mb-8">Served with Basmati Rice, Grilled Tomato, Tzatziki, Sumac, & Grilled Pita</p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">CRANBERRY RICE & CHICKEN KABOB</h3><span class="text-xl font-semibold text-amber-600">$14.99</span></div><p class="mt-2 text-gray-600">Cranberry Basmati rice and a Grilled Middle Eastern Chicken Kabob Skewer</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">CHELO KABOB</h3><span class="text-xl font-semibold text-amber-600">$15.99</span></div><p class="mt-2 text-gray-600">Grilled Middle Eastern Minced Beef Kabob Skewers</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">CHICKEN KABOB</h3><span class="text-xl font-semibold text-amber-600">$15.99</span></div><p class="mt-2 text-gray-600">Grilled Middle Eastern Fresh Chicken Kabob Skewer</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">KABOB BARG</h3><span class="text-xl font-semibold text-amber-600">$15.99</span></div><p class="mt-2 text-gray-600">Grilled Middle Eastern USDA Top Sirloin Prime Steak Skewer</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">CHICKEN SOLTANI</h3><span class="text-xl font-semibold text-amber-600">$18.99</span></div><p class="mt-2 text-gray-600">Grilled Middle Eastern Minced Beef Kabob Skewer & Grilled Middle Eastern Chicken Kabob Skewer</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">COMBINATION KABOB</h3><span class="text-xl font-semibold text-amber-600">$21.99</span></div><p class="mt-2 text-gray-600">Grilled USDA Top Sirloin Prime Steak Skewer & your choice of Grilled Minced Beef Kabob Skewer or Grilled Chicken Kabob Skewer</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">PADRIA’S FAMOUS RED LENTIL SOUP (V)</h3><span class="text-xl font-semibold text-amber-600">$5.99</span></div><p class="mt-2 text-gray-600">Lentils, Carrots, Potatoes, & Grilled Pita</p></div>
+                </div>
+            </section>
+            
+            <!-- Salads -->
+            <section class="mb-16">
+                <h2 class="text-3xl font-serif font-bold menu-section-header">Salads</h2>
+                <p class="text-center text-gray-600 -mt-4 mb-8">All Salads include Romaine Lettuce, Tomato, Cucumber, Red Onion, Olives, All Natural Padria Dressing & Tzatziki & Grilled Pita</p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">LAMB GYRO SALAD</h3><span class="text-xl font-semibold text-amber-600">$13.99</span></div><p class="mt-2 text-gray-600">Shaved Vertical Rotisserie Lamb</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">CHICKEN GYRO SALAD</h3><span class="text-xl font-semibold text-amber-600">$13.99</span></div><p class="mt-2 text-gray-600">Shaved Roasted Chicken</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">CHICKEN SOUVLAKI SALAD</h3><span class="text-xl font-semibold text-amber-600">$13.99</span></div><p class="mt-2 text-gray-600">Grilled Greek Chicken Breast Skewer</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">FALAFEL SALAD (V)</h3><span class="text-xl font-semibold text-amber-600">$11.99</span></div><p class="mt-2 text-gray-600">Fried Chickpea Balls</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">GREEK SALAD (V)</h3><span class="text-xl font-semibold text-amber-600">$7.99</span></div><p class="mt-2 text-gray-600">House Salad topped with Feta Cheese & Bell Pepper</p></div>
+                </div>
+            </section>
+
+            <!-- Sandwiches -->
+            <section class="mb-16">
+                <h2 class="text-3xl font-serif font-bold menu-section-header">Sandwiches</h2>
+                <p class="text-center text-gray-600 -mt-4 mb-8">All sandwiches wrapped in a Grilled Pita with Romaine Lettuce, Tomato, Red Onion, Tzatziki, & a side of Hummus</p>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">LAMB GYRO</h3><span class="text-xl font-semibold text-amber-600">$9.95</span></div><p class="mt-2 text-gray-600">Shaved Vertical Rotisserie Lamb</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">CHICKEN GYRO</h3><span class="text-xl font-semibold text-amber-600">$9.95</span></div><p class="mt-2 text-gray-600">Shaved Roasted Chicken</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">FALAFEL SANDWICH</h3><span class="text-xl font-semibold text-amber-600">$7.95</span></div><p class="mt-2 text-gray-600">Fried Chickpea Balls</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">CHICKEN SOUVLAKI SANDWICH</h3><span class="text-xl font-semibold text-amber-600">$8.95</span></div><p class="mt-2 text-gray-600">Grilled Greek Chicken Breast Skewer</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">BEEF SOUVLAKI SANDWICH</h3><span class="text-xl font-semibold text-amber-600">$9.95</span></div><p class="mt-2 text-gray-600">Grilled Greek USDA Top Sirloin Prime Steak Skewer</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">KOOBIDEH (Minced Beef) SANDWICH</h3><span class="text-xl font-semibold text-amber-600">$12.99</span></div><p class="mt-2 text-gray-600">Minced Beef Kabob</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">KOOFTEH SANDWICH</h3><span class="text-xl font-semibold text-amber-600">$10.99</span></div><p class="mt-2 text-gray-600">Turkey Meatball</p></div>
+                </div>
+                <div class="text-center mt-8 bg-amber-100 border-l-4 border-amber-500 text-amber-700 p-4 rounded-r-lg">
+                    <p class="font-bold">-COMBO STYLE-</p>
+                    <p>ADD FRIES & DRINK TO ANY ORDER – $4.95</p>
+                </div>
+            </section>
+
+            <!-- Appetizers -->
+            <section class="mb-16">
+                 <h2 class="text-3xl font-serif font-bold menu-section-header">Appetizers</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">PADRIA SALAD</h3><span class="text-xl font-semibold text-amber-600">$6.99</span></div><p class="mt-2 text-gray-600">Romaine Lettuce, Tomato, Cucumber, Red Onion, Olives, All Natural Padria Dressing</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">TABOULI SALAD</h3><span class="text-xl font-semibold text-amber-600">$6.99</span></div><p class="mt-2 text-gray-600">Bulgar Wheat, Parsley, Tomatoes, Green Onion, & Dressing</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">PADRIA’S BABA GHANOUSH</h3><span class="text-xl font-semibold text-amber-600">$7.99</span></div><p class="mt-2 text-gray-600">Roasted Eggplant, Garlic, and Chives served with Pita</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">HUMMUS PLATE (V)</h3><span class="text-xl font-semibold text-amber-600">$7.99</span></div><p class="mt-2 text-gray-600">House-made Hummus topped with Tomato & Cucumber served with Grilled Pita</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">PADRIA PLATTER (V)</h3><span class="text-xl font-semibold text-amber-600">$11.99</span></div><p class="mt-2 text-gray-600">Baba Ghanoush, Falafel, Hummus, Tabouli Salad, Olives, Feta Cheese, & Grilled Pita</p></div>
+                    <div class="menu-item bg-gray-50 p-6 rounded-lg"><div class="flex justify-between"><h3 class="text-xl font-bold">FRIES</h3><span class="text-xl font-semibold text-amber-600">$3.00</span></div><p class="mt-2 text-gray-600">Steak-cut Potatoes. ADD FETA OR GARLIC – $4.00</p></div>
+                </div>
+            </section>
+
+            <!-- Kids, Desserts, Beverages -->
+            <section>
+                 <div class="grid md:grid-cols-3 gap-8 text-center">
+                    <div>
+                        <h2 class="text-2xl font-serif font-bold menu-section-header">Kids Menu</h2>
+                        <p class="text-gray-600">(12 & Under)</p>
+                        <p class="mt-4">Choice of: Rotisserie Lamb or Roasted Chicken</p>
+                        <p>Basmati Rice or Fries</p>
+                        <p class="font-bold text-amber-600 text-lg mt-2">$6.99</p>
+                    </div>
+                     <div>
+                        <h2 class="text-2xl font-serif font-bold menu-section-header">Desserts</h2>
+                        <div class="space-y-2 mt-4">
+                            <p>Baklava – $3.50</p>
+                            <p>Saffron Sundae – $3.95</p>
+                            <p>PADRIA'S FAMOUS TURKISH COFFEE – $3.75</p>
+                        </div>
+                    </div>
+                     <div>
+                        <h2 class="text-2xl font-serif font-bold menu-section-header">Beverages</h2>
+                        <div class="space-y-2 mt-4">
+                            <p>Fountain Drinks</p>
+                            <p>Canned Coke & Diet Coke</p>
+                            <p>Bottled Water (Still & Sparkling)</p>
+                            <p>San Pellegrino Sparkling Fruit</p>
+                            <p>Tea (Persian & Green)</p>
+                            <p>Bottled and Canned Beer</p>
+                            <p>Wine</p>
+                        </div>
+                    </div>
+                 </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10">
+        <div class="container mx-auto px-6 text-center">
+            <p class="font-serif text-2xl mb-2">PADRIA</p>
+            <p class="mb-4">&copy; 2025 Padria. All Rights Reserved.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="hover:text-amber-500 transition-colors">Facebook</a>
+                <a href="#" class="hover:text-amber-500 transition-colors">Yelp</a>
+                <a href="#" class="hover:text-amber-500 transition-colors">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
