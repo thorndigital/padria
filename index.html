@@ -24,27 +24,31 @@
         /* Scrolling Gallery Styles */
         .scroller {
             max-width: 100%;
+            /* Add overflow-hidden to contain the scrolling content */
+            overflow: hidden;
+            /* Add a mask to fade out edges if desired, but not strictly necessary for basic scroll */
         }
         .scroller__inner {
             display: flex;
-            flex-wrap: nowrap;
+            flex-wrap: nowrap; /* Ensure items stay in a single line */
             gap: 1rem;
-            animation: scroll 60s linear infinite;
+            animation: scroll 60s linear infinite; /* Apply the scrolling animation */
         }
         .scroller:hover .scroller__inner {
-            animation-play-state: paused;
+            animation-play-state: paused; /* Pause animation on hover */
         }
         .scroller img {
             height: 250px;
             width: auto;
-            max-width: none;
+            max-width: none; /* Override max-width to allow images to be larger than container */
             border-radius: 0.75rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            flex-shrink: 0; /* Prevent images from shrinking */
         }
 
         @keyframes scroll {
             to {
-                transform: translateX(calc(-100% - 1rem));
+                transform: translateX(calc(-50% - 0.5rem)); /* Adjust to scroll half the content plus gap */
             }
         }
     </style>
@@ -175,6 +179,34 @@
         document.getElementById('mobile-menu-button').addEventListener('click', () => {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
+
+        // Scrolling gallery initialization
+        const scrollers = document.querySelectorAll(".scroller");
+
+        // If a user hasn't opted-in for reduced motion, then we add the animation
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            addAnimation();
+        }
+
+        function addAnimation() {
+            scrollers.forEach((scroller) => {
+                // add data-animated="true" to every .scroller on the page
+                scroller.setAttribute("data-animated", true);
+
+                // Make an array from the elements within .scroller-inner
+                const scrollerInner = scroller.querySelector(".scroller__inner");
+                const scrollerContent = Array.from(scrollerInner.children);
+
+                // For each item in the array, clone it
+                // add aria-hidden to it
+                // and append it to the .scroller-inner
+                scrollerContent.forEach((item) => {
+                    const duplicatedItem = item.cloneNode(true);
+                    duplicatedItem.setAttribute("aria-hidden", true);
+                    scrollerInner.appendChild(duplicatedItem);
+                });
+            });
+        }
     </script>
 </body>
 </html>
