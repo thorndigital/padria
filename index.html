@@ -24,9 +24,7 @@
         /* Scrolling Gallery Styles */
         .scroller {
             max-width: 100%;
-            /* Add overflow-hidden to contain the scrolling content */
             overflow: hidden;
-            /* Add a mask to fade out edges if desired, but not strictly necessary for basic scroll */
         }
         .scroller__inner {
             display: flex;
@@ -46,9 +44,13 @@
             flex-shrink: 0; /* Prevent images from shrinking */
         }
 
+        /* Modified keyframes for right-moving scroll */
         @keyframes scroll {
+            from {
+                transform: translateX(calc(-100% - 1rem)); /* Start from the left, equivalent to one full set of content + gap */
+            }
             to {
-                transform: translateX(calc(-50% - 0.5rem)); /* Adjust to scroll half the content plus gap */
+                transform: translateX(0); /* Move to the right until the original content is visible */
             }
         }
     </style>
@@ -180,33 +182,34 @@
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
 
-        // Scrolling gallery initialization
-        const scrollers = document.querySelectorAll(".scroller");
+        // Scrolling gallery initialization
+        const scrollers = document.querySelectorAll(".scroller");
 
-        // If a user hasn't opted-in for reduced motion, then we add the animation
-        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-            addAnimation();
-        }
+        // If a user hasn't opted-in for reduced motion, then we add the animation
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            addAnimation();
+        }
 
-        function addAnimation() {
-            scrollers.forEach((scroller) => {
-                // add data-animated="true" to every .scroller on the page
-                scroller.setAttribute("data-animated", true);
+        function addAnimation() {
+            scrollers.forEach((scroller) => {
+                // add data-animated="true" to every .scroller on the page
+                scroller.setAttribute("data-animated", true);
 
-                // Make an array from the elements within .scroller-inner
-                const scrollerInner = scroller.querySelector(".scroller__inner");
-                const scrollerContent = Array.from(scrollerInner.children);
+                // Make an array from the elements within .scroller-inner
+                const scrollerInner = scroller.querySelector(".scroller__inner");
+                const scrollerContent = Array.from(scrollerInner.children);
 
-                // For each item in the array, clone it
-                // add aria-hidden to it
-                // and append it to the .scroller-inner
-                scrollerContent.forEach((item) => {
-                    const duplicatedItem = item.cloneNode(true);
-                    duplicatedItem.setAttribute("aria-hidden", true);
-                    scrollerInner.appendChild(duplicatedItem);
-                });
-            });
-        }
+                // For each item in the array, clone it
+                // add aria-hidden to it
+                // and append it to the .scroller-inner
+                scrollerContent.forEach((item) => {
+                    const duplicatedItem = item.cloneNode(true);
+                    duplicatedItem.setAttribute("aria-hidden", true);
+                    scrollerInner.appendChild(duplicatedItem);
+                });
+            });
+        }
     </script>
 </body>
 </html>
+
