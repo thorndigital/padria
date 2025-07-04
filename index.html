@@ -19,6 +19,33 @@
         .hero-section { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1600x900/4a4a4a/ffffff?text=Padria+Restaurant') no-repeat center center/cover; }
         .cta-button { transition: all 0.3s ease; }
         .cta-button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        
+        /* Scrolling Gallery Styles */
+        .scroller {
+            max-width: 100%;
+        }
+        .scroller__inner {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 1rem;
+            animation: scroll 60s linear infinite;
+        }
+        .scroller:hover .scroller__inner {
+            animation-play-state: paused;
+        }
+        .scroller img {
+            height: 250px;
+            width: auto;
+            max-width: none;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        @keyframes scroll {
+            to {
+                transform: translateX(calc(-100% - 1rem));
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -69,6 +96,35 @@
                     <h2 class="text-4xl font-serif font-bold mb-4">A Tradition of Taste</h2>
                     <p class="text-gray-600 mb-8">Since 2008, we've been dedicated to serving our community with delicious, high-quality meals. Our commitment to fresh ingredients and time-honored recipes is at the heart of every dish we create. Come and be a part of our story.</p>
                     <a href="about.html" class="cta-button inline-block bg-white border border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white font-bold py-3 px-8 rounded-full">Learn More About Us</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scrolling Image Gallery -->
+        <section class="py-12 bg-gray-50">
+            <div class="scroller overflow-hidden" data-animated="true">
+                <div class="scroller__inner">
+                    <img src="https://placehold.co/400x300/cccccc/333333?text=Gallery+1" alt="gallery1.jpg">
+                    <img src="https://placehold.co/400x300/cccccc/333333?text=Gallery+2" alt="gallery2.jpg">
+                    <img src="https://placehold.co/400x300/cccccc/333333?text=Gallery+3" alt="gallery3.jpg">
+                    <img src="https://placehold.co/400x300/cccccc/333333?text=Gallery+4" alt="gallery4.jpg">
+                    <img src="https://placehold.co/400x300/cccccc/333333?text=Gallery+5" alt="gallery5.jpg">
+                    <img src="https://placehold.co/400x300/cccccc/333333?text=Gallery+6" alt="gallery6.jpg">
+                    <img src="https://placehold.co/400x300/cccccc/333333?text=Gallery+7" alt="gallery7.jpg">
+                    <img src="https://placehold.co/400x300/cccccc/333333?text=Gallery+8" alt="gallery8.jpg">
+                    <img src="https://placehold.co/400x300/cccccc/333333?text=Gallery+9" alt="gallery9.jpg">
+                    <img src="https://placehold.co/400x300/cccccc/333333?text=Gallery+10" alt="gallery10.jpg">
+                    <!-- Duplicated for seamless scroll -->
+                    <img src="https://placehold.co/400x300/cccccc/333333?text=Gallery+1" alt="gallery1.jpg">
+                    <img src="https://placehold.co/400x300/cccccc/333333?text=Gallery+2" alt="gallery2.jpg">
+                    <img src="https://placehold.co/400x300/cccccc/333333?text=Gallery+3" alt="gallery3.jpg">
+                    <img src="https://placehold.co/400x300/cccccc/333333?text=Gallery+4" alt="gallery4.jpg">
+                    <img src="https://placehold.co/400x300/cccccc/333333?text=Gallery+5" alt="gallery5.jpg">
+                    <img src="https://placehold.co/400x300/cccccc/333333?text=Gallery+6" alt="gallery6.jpg">
+                    <img src="https://placehold.co/400x300/cccccc/333333?text=Gallery+7" alt="gallery7.jpg">
+                    <img src="https://placehold.co/400x300/cccccc/333333?text=Gallery+8" alt="gallery8.jpg">
+                    <img src="https://placehold.co/400x300/cccccc/333333?text=Gallery+9" alt="gallery9.jpg">
+                    <img src="https://placehold.co/400x300/cccccc/333333?text=Gallery+10" alt="gallery10.jpg">
                 </div>
             </div>
         </section>
