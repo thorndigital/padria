@@ -1,215 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Padria - Authentic Cuisine</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-        .font-serif { font-family: 'Playfair Display', serif; }
-        .fade-in-up { animation: fadeInUp 1s ease-out forwards; opacity: 0; }
-        .fade-in { animation: fadeIn 1.5s ease-out forwards; opacity: 0; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .nav-link { position: relative; transition: color 0.3s; }
-        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 50%; transform: translateX(-50%); background-color: #D97706; transition: width 0.3s; }
-        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-        /* Updated hero-section to use assets/homebg.jpg */
-        .hero-section { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/homebg.jpg') no-repeat center center/cover; }
-        .cta-button { transition: all 0.3s ease; }
-        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        
-        /* Scrolling Gallery Styles */
-        .scroller {
-            max-width: 100%;
-            overflow: hidden;
-        }
-        .scroller__inner {
-            display: flex;
-            flex-wrap: nowrap; /* Ensure items stay in a single line */
-            gap: 1rem;
-            animation: scroll 60s linear infinite; /* Apply the scrolling animation */
-        }
-        .scroller:hover .scroller__inner {
-            animation-play-state: paused; /* Pause animation on hover */
-        }
-        .scroller img {
-            height: 250px;
-            width: auto;
-            max-width: none; /* Override max-width to allow images to be larger than container */
-            border-radius: 0.75rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            flex-shrink: 0; /* Prevent images from shrinking */
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padria - Authentic Cuisine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .fade-in-up { animation: fadeInUp 1s ease-out forwards; opacity: 0; }
+        .fade-in { animation: fadeIn 1.5s ease-out forwards; opacity: 0; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .nav-link { position: relative; transition: color 0.3s; }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 50%; transform: translateX(-50%); background-color: #D97706; transition: width 0.3s; }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .hero-section { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/homebg.jpg') no-repeat center center/cover; }
+        .cta-button { transition: all 0.3s ease; }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        
+        /* Scrolling Gallery Styles */
+        .scroller {
+            max-width: 100%;
+            overflow: hidden;
+        }
+        .scroller__inner {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 1rem;
+        }
+        .scroller:hover .scroller__inner {
+            animation-play-state: paused; /* Pause animation on hover */
+        }
+        /* This rule applies the animation based on the data attribute set by the JS */
+        .scroller[data-animated="true"] .scroller__inner {
+            animation: scroll-right 60s linear infinite;
+        }
+        .scroller img {
+            height: 250px;
+            width: auto;
+            max-width: none;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
 
-        /* Modified keyframes for right-moving scroll */
-        @keyframes scroll {
-            from {
-                transform: translateX(calc(-100% - 1rem)); /* Start from the left, equivalent to one full set of content + gap */
-            }
-            to {
-                transform: translateX(0); /* Move to the right until the original content is visible */
-            }
-        }
-    </style>
+        /* Corrected keyframes for a right-moving scroll */
+        @keyframes scroll-right {
+            from {
+                /* Start with the content shifted left by the width of one set of images */
+                transform: translateX(-50%);
+            }
+            to {
+                /* Animate to the original position */
+                transform: translateX(0);
+            }
+        }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-    <!-- Navigation -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-3xl font-serif font-bold text-gray-900">PADRIA</a>
-            <div class="hidden md:flex items-center space-x-8">
-                <a href="index.html" class="nav-link active text-gray-900 font-semibold">Home</a>
-                <a href="menu.html" class="nav-link text-gray-600 hover:text-gray-900">Menu</a>
-                <a href="catering.html" class="nav-link text-gray-600 hover:text-gray-900">Catering</a>
-                <a href="about.html" class="nav-link text-gray-600 hover:text-gray-900">About</a>
-                <a href="contact.html" class="nav-link text-gray-600 hover:text-gray-900">Contact</a>
-            </div>
-            <button id="mobile-menu-button" class="md:hidden flex items-center">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
-        </nav>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden">
-            <a href="index.html" class="block py-2 px-4 text-sm hover:bg-gray-100">Home</a>
-            <a href="menu.html" class="block py-2 px-4 text-sm hover:bg-gray-100">Menu</a>
-            <a href="catering.html" class="block py-2 px-4 text-sm hover:bg-gray-100">Catering</a>
-            <a href="about.html" class="block py-2 px-4 text-sm hover:bg-gray-100">About</a>
-            <a href="contact.html" class="block py-2 px-4 text-sm hover:bg-gray-100">Contact</a>
-        </div>
-    </header>
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-serif font-bold text-gray-900">PADRIA</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="nav-link active text-gray-900 font-semibold">Home</a>
+                <a href="menu.html" class="nav-link text-gray-600 hover:text-gray-900">Menu</a>
+                <a href="catering.html" class="nav-link text-gray-600 hover:text-gray-900">Catering</a>
+                <a href="about.html" class="nav-link text-gray-600 hover:text-gray-900">About</a>
+                <a href="contact.html" class="nav-link text-gray-600 hover:text-gray-900">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden flex items-center">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="index.html" class="block py-2 px-4 text-sm hover:bg-gray-100">Home</a>
+            <a href="menu.html" class="block py-2 px-4 text-sm hover:bg-gray-100">Menu</a>
+            <a href="catering.html" class="block py-2 px-4 text-sm hover:bg-gray-100">Catering</a>
+            <a href="about.html" class="block py-2 px-4 text-sm hover:bg-gray-100">About</a>
+            <a href="contact.html" class="block py-2 px-4 text-sm hover:bg-gray-100">Contact</a>
+        </div>
+    </header>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Hero Section -->
-        <section class="hero-section text-white h-[calc(100vh-80px)] flex items-center justify-center text-center">
-            <div class="container mx-auto px-6">
-                <h1 class="text-5xl md:text-7xl font-serif font-bold mb-4 fade-in-up" style="animation-delay: 0.2s;">Experience Authentic Flavors</h1>
-                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto fade-in-up" style="animation-delay: 0.4s;">Established in 2008, Padria brings you the finest dishes, crafted with passion and tradition.</p>
-                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 fade-in-up" style="animation-delay: 0.6s;">
-                    <a href="menu.html" class="cta-button bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-8 rounded-full shadow-lg">View Our Menu</a>
-                    <a href="catering.html" class="cta-button bg-gray-700 hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-full shadow-lg">Catering Services</a>
-                </div>
-            </div>
-        </section>
+    <main>
+        <section class="hero-section text-white h-[calc(100vh-80px)] flex items-center justify-center text-center">
+            <div class="container mx-auto px-6">
+                <h1 class="text-5xl md:text-7xl font-serif font-bold mb-4 fade-in-up" style="animation-delay: 0.2s;">Experience Authentic Flavors</h1>
+                <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto fade-in-up" style="animation-delay: 0.4s;">Established in 2008, Padria brings you the finest dishes, crafted with passion and tradition.</p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 fade-in-up" style="animation-delay: 0.6s;">
+                    <a href="menu.html" class="cta-button bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-8 rounded-full shadow-lg">View Our Menu</a>
+                    <a href="catering.html" class="cta-button bg-gray-700 hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-full shadow-lg">Catering Services</a>
+                </div>
+            </div>
+        </section>
 
-        <!-- About / Intro Section -->
-        <section class="py-20 bg-white">
-            <div class="container mx-auto px-6 text-center">
-                <div class="max-w-3xl mx-auto">
-                    <h2 class="text-4xl font-serif font-bold mb-4">A Tradition of Taste</h2>
-                    <p class="text-gray-600 mb-8">Since 2008, we've been dedicated to serving our community with delicious, high-quality meals. Our commitment to fresh ingredients and time-honored recipes is at the heart of every dish we create. Come and be a part of our story.</p>
-                    <a href="about.html" class="cta-button inline-block bg-white border border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white font-bold py-3 px-8 rounded-full">Learn More About Us</a>
-                </div>
-            </div>
-        </section>
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <div class="max-w-3xl mx-auto">
+                    <h2 class="text-4xl font-serif font-bold mb-4">A Tradition of Taste</h2>
+                    <p class="text-gray-600 mb-8">Since 2008, we've been dedicated to serving our community with delicious, high-quality meals. Our commitment to fresh ingredients and time-honored recipes is at the heart of every dish we create. Come and be a part of our story.</p>
+                    <a href="about.html" class="cta-button inline-block bg-white border border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white font-bold py-3 px-8 rounded-full">Learn More About Us</a>
+                </div>
+            </div>
+        </section>
 
-        <!-- Scrolling Image Gallery -->
-        <section class="py-12 bg-gray-50">
-            <div class="scroller overflow-hidden" data-animated="true">
-                <div class="scroller__inner">
-                    <img src="assets/gallery1.jpg" alt="gallery1.jpg">
-                    <img src="assets/gallery2.jpg" alt="gallery2.jpg">
-                    <img src="assets/gallery3.jpg" alt="gallery3.jpg">
-                    <img src="assets/gallery4.jpg" alt="gallery4.jpg">
-                    <img src="assets/gallery5.jpg" alt="gallery5.jpg">
-                    <img src="assets/gallery6.jpg" alt="gallery6.jpg">
-                    <img src="assets/gallery7.jpg" alt="gallery7.jpg">
-                    <img src="assets/gallery8.jpg" alt="gallery8.jpg">
-                    <img src="assets/gallery9.jpg" alt="gallery9.jpg">
-                    <img src="assets/gallery10.jpg" alt="gallery10.jpg">
-                    <!-- Duplicated for seamless scroll -->
-                    <img src="assets/gallery1.jpg" alt="gallery1.jpg">
-                    <img src="assets/gallery2.jpg" alt="gallery2.jpg">
-                    <img src="assets/gallery3.jpg" alt="gallery3.jpg">
-                    <img src="assets/gallery4.jpg" alt="gallery4.jpg">
-                    <img src="assets/gallery5.jpg" alt="gallery5.jpg">
-                    <img src="assets/gallery6.jpg" alt="gallery6.jpg">
-                    <img src="assets/gallery7.jpg" alt="gallery7.jpg">
-                    <img src="assets/gallery8.jpg" alt="gallery8.jpg">
-                    <img src="assets/gallery9.jpg" alt="gallery9.jpg">
-                    <img src="assets/gallery10.jpg" alt="gallery10.jpg">
-                </div>
-            </div>
-        </section>
+        <section class="py-12 bg-gray-50">
+            <div class="scroller">
+                <div class="scroller__inner">
+                    <img src="assets/gallery1.jpg" alt="gallery1.jpg">
+                    <img src="assets/gallery2.jpg" alt="gallery2.jpg">
+                    <img src="assets/gallery3.jpg" alt="gallery3.jpg">
+                    <img src="assets/gallery4.jpg" alt="gallery4.jpg">
+                    <img src="assets/gallery5.jpg" alt="gallery5.jpg">
+                    <img src="assets/gallery6.jpg" alt="gallery6.jpg">
+                    <img src="assets/gallery7.jpg" alt="gallery7.jpg">
+                    <img src="assets/gallery8.jpg" alt="gallery8.jpg">
+                    <img src="assets/gallery9.jpg" alt="gallery9.jpg">
+                    <img src="assets/gallery10.jpg" alt="gallery10.jpg">
+                </div>
+            </div>
+        </section>
 
-        <!-- Call to Action - Catering -->
-        <section class="bg-gray-800 text-white py-20">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-serif font-bold mb-4">Let Us Cater Your Next Event</h2>
-                <p class="text-gray-300 mb-8 max-w-2xl mx-auto">From corporate lunches to special celebrations, bring the authentic taste of Padria to your guests. We offer customizable packages to fit any occasion.</p>
-                <a href="catering.html" class="cta-button bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-8 rounded-full shadow-lg">Inquire About Catering</a>
-            </div>
-        </section>
-        
-        <!-- Location & Hours -->
-        <section class="py-20 bg-white">
-            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-4xl font-serif font-bold mb-6">Visit Us</h2>
-                    <div class="space-y-4 text-lg">
-                        <p><strong class="text-gray-900">Address:</strong><br>9708 NE 119th Way, Kirkland, WA 98034</p>
-                        <p><strong class="text-gray-900">Hours:</strong><br>Mon-Sat: 11AM - 9PM<br>Wed: 11AM - 3PM<br>Sun: 12PM - 8PM</p>
-                        <p><strong class="text-gray-900">Phone:</strong><br><a href="tel:4258141693" class="text-amber-600 hover:underline">425.814.1693</a></p>
-                    </div>
-                </div>
-                <div>
-                    <iframe class="w-full h-80 rounded-lg shadow-xl" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2683.083439245107!2d-122.1996540843651!3d47.71719947919241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549012010b9b81b7%3A0x7e5b2e6a3f1b4f4c!2s9708%20NE%20119th%20Way%2C%20Kirkland%2C%20WA%2098034!5e0!3m2!1sen!2sus!4v1688435000000!5m2!1sen!2sus" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-        </section>
-    </main>
+        <section class="bg-gray-800 text-white py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-serif font-bold mb-4">Let Us Cater Your Next Event</h2>
+                <p class="text-gray-300 mb-8 max-w-2xl mx-auto">From corporate lunches to special celebrations, bring the authentic taste of Padria to your guests. We offer customizable packages to fit any occasion.</p>
+                <a href="catering.html" class="cta-button bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-8 rounded-full shadow-lg">Inquire About Catering</a>
+            </div>
+        </section>
+        
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-serif font-bold mb-6">Visit Us</h2>
+                    <div class="space-y-4 text-lg">
+                        <p><strong class="text-gray-900">Address:</strong><br>9708 NE 119th Way, Kirkland, WA 98034</p>
+                        <p><strong class="text-gray-900">Hours:</strong><br>Mon-Sat: 11AM - 9PM<br>Wed: 11AM - 3PM<br>Sun: 12PM - 8PM</p>
+                        <p><strong class="text-gray-900">Phone:</strong><br><a href="tel:4258141693" class="text-amber-600 hover:underline">425.814.1693</a></p>
+                    </div>
+                </div>
+                <div>
+                    <iframe class="w-full h-80 rounded-lg shadow-xl" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2683.083439245107!2d-122.1996540843651!3d47.71719947919241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549012010b9b81b7%3A0x7e5b2e6a3f1b4f4c!2s9708%20NE%20119th%20Way%2C%20Kirkland%2C%20WA%2098034!5e0!3m2!1sen!2sus!4v1688435000000!5m2!1sen!2sus" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-10">
-        <div class="container mx-auto px-6 text-center">
-            <p class="font-serif text-2xl mb-2">PADRIA</p>
-            <p class="mb-4">&copy; 2025 Padria. All Rights Reserved.</p>
-            <div class="flex justify-center space-x-6">
-                <a href="#" class="hover:text-amber-500 transition-colors">Facebook</a>
-                <a href="#" class="hover:text-amber-500 transition-colors">Yelp</a>
-                <a href="#" class="hover:text-amber-500 transition-colors">Instagram</a>
-            </div>
-        </div>
-    </footer>
+    <footer class="bg-gray-900 text-white py-10">
+        <div class="container mx-auto px-6 text-center">
+            <p class="font-serif text-2xl mb-2">PADRIA</p>
+            <p class="mb-4">© 2025 Padria. All Rights Reserved.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="hover:text-amber-500 transition-colors">Facebook</a>
+                <a href="#" class="hover:text-amber-500 transition-colors">Yelp</a>
+                <a href="#" class="hover:text-amber-500 transition-colors">Instagram</a>
+            </div>
+        </div>
+    </footer>
 
-    <script>
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', () => {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
 
-        // Scrolling gallery initialization
-        const scrollers = document.querySelectorAll(".scroller");
+        // Scrolling gallery initialization
+        const scrollers = document.querySelectorAll(".scroller");
 
-        // If a user hasn't opted-in for reduced motion, then we add the animation
-        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-            addAnimation();
-        }
+        // If a user hasn't opted-in for reduced motion, then we add the animation
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            addAnimation();
+        }
 
-        function addAnimation() {
-            scrollers.forEach((scroller) => {
-                // add data-animated="true" to every .scroller on the page
-                scroller.setAttribute("data-animated", true);
+        function addAnimation() {
+            scrollers.forEach((scroller) => {
+                // add data-animated="true" to every .scroller on the page
+                scroller.setAttribute("data-animated", true);
 
-                // Make an array from the elements within .scroller-inner
-                const scrollerInner = scroller.querySelector(".scroller__inner");
-                const scrollerContent = Array.from(scrollerInner.children);
+                // Make an array from the elements within .scroller-inner
+                const scrollerInner = scroller.querySelector(".scroller__inner");
+                const scrollerContent = Array.from(scrollerInner.children);
 
-                // For each item in the array, clone it
-                // add aria-hidden to it
-                // and append it to the .scroller-inner
-                scrollerContent.forEach((item) => {
-                    const duplicatedItem = item.cloneNode(true);
-                    duplicatedItem.setAttribute("aria-hidden", true);
-                    scrollerInner.appendChild(duplicatedItem);
-                });
-            });
-        }
-    </script>
+                // For each item in the array, clone it, add aria-hidden, and append it
+                scrollerContent.forEach((item) => {
+                    const duplicatedItem = item.cloneNode(true);
+                    duplicatedItem.setAttribute("aria-hidden", true);
+                    scrollerInner.appendChild(duplicatedItem);
+                });
+            });
+        }
+    </script>
 </body>
 </html>
-
